@@ -9,7 +9,14 @@ import './App.css';
 class App extends Component {
   state = {
     listings: [],
+    selectedId: -1,
   }
+
+  listingSelectEvent = (id) => {
+    this.setState({
+      selectedId: id,
+    });
+  };
 
   componentDidMount () {
     connection();
@@ -24,7 +31,9 @@ class App extends Component {
     return (
       <div className='text-center'>
         <div className='col-sm-6'>
-          <Listings listings={this.state.listings}/>
+          <Listings
+            onListingSelection={this.listingSelectEvent}
+            listings={this.state.listings}/>
         </div>
         <div className='col-sm-6'>
           <Building />
