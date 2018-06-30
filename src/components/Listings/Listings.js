@@ -8,15 +8,15 @@ const listingShape = listingShapes;
 
 class Listings extends React.Component {
   static propTypes = {
-    listings: PropTypes.arrayOf(listingShape)
+    listings: PropTypes.arrayOf(listingShape),
   };
 
   render () {
     // const listings = this.props.listings;
     const {listings} = this.props;
-    const listingsItemComponents = listings.map((item) => {
+    const listingsItemComponents = listings.map((item, i) => {
       return (
-        <ListingItem key={item.id} listing={item}/>
+        <ListingItem key={item.id} listing={item} index={i}/>
       );
     });
     return (
