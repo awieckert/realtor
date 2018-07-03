@@ -18,4 +18,11 @@ const listingShapes = PropTypes.shape({
   imageUrl: PropTypes.string.isRequired,
 });
 
-export {listingShapes};
+const listingOptionalShape = PropTypes.oneOfType([
+  PropTypes.shape({
+    nope: PropTypes.string.isRequired,
+  }),
+  listingShapes,
+]);
+
+export {listingShapes, listingOptionalShape};
