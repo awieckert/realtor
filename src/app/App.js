@@ -29,7 +29,7 @@ class App extends Component {
 
   render () {
     const {selectedId, listings} = this.state;
-    const selectedListing = listings.find(item => item.id === selectedId);
+    const selectedListing = listings.find(item => item.id === selectedId) || {nope: 'nope'};
     return (
       <div className='text-center'>
         <div className='col-sm-6'>
