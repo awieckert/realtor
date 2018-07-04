@@ -24,8 +24,8 @@ const postRequest = (newListing) => {
       resolve(data);
     }).catch((err) => {
       reject(err);
-    })
-  })
+    });
+  });
 };
 
 export default {getRequest, postRequest};
