@@ -12,6 +12,16 @@ class App extends Component {
     selectedId: -1,
   }
 
+  formSubmitEvent = (newListing) => {
+    listingRequests.postRequest(newListing).then(() => {
+      listingRequests.getRequest().then((listingsArray) => {
+        this.setState({listings: listingsArray});
+      });
+    }).catch((err) => {
+      console.error('Error with Post: ', err);
+    });
+  };
+
   listingSelectEvent = (id) => {
     this.setState({
       selectedId: id,
@@ -41,7 +51,7 @@ class App extends Component {
           <Building listing={selectedListing}/>
         </div>
         <div className='col-sm-12'>
-          <ListingsForm />
+          <ListingsForm onSubmit={this.formSubmitEvent}/>
         </div>
       </div>
     );
